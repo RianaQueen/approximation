@@ -1,0 +1,31 @@
+{
+  "name": "approximation",
+  "version": "1.0.0",
+  "description": "Node.js / JavaScript ESM library to support proxy URLs, proxies, etc.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node src/models/Proxy.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RianaQueen/approximation.git"
+  },
+  "keywords": [
+    "proxy"
+  ],
+  "author": "RianaQueen",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/RianaQueen/approximation/issues"
+  },
+  "homepage": "https://github.com/RianaQueen/approximation#readme",
+  "type": "module",
+  "imports": {
+    "#src/*": "./src/*",
+    "#models/*": "./src/models/*",
+    "#utils/*": "./src/utils/*"
+  },
+  "peerDependencies": {
+    "https-proxy-agent": "^9.0.0"
+  }
+}
