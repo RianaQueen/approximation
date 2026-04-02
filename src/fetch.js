@@ -18,6 +18,6 @@ export async function makeProxyOpts(fetch, proxy) {
    opts.agent = new HttpsProxyAgent(proxy.uri);
   }
 
-  return opts;
+  return { opts };
 }
 

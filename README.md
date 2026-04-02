@@ -22,15 +22,16 @@ Proxy line can also include "proxy meta", after `##` separator:
 Example:
 
 ```js
-import { Proxy } from 'approximation';
-import fetch0 from 'node-fetch'; // Be careful! Node.js 20+ native fetch is Undici-based and uses its own proxy agent, opts.agent will be ignored! This example is for node-fetch only!
-import { HttpsProxyAgent } from 'https-proxy-agent';
+import { Proxy, makeProxyOpts } from 'approximation';
+import fetch0 from 'node-fetch';
+// makeProxyOpts() also supports Node.js 20+ native Undici Fetch.
+// node-fetch -> npm install https-proxy-agent
+// native fetch -> npm install undici
 
 const proxy = Proxy.fromLine('ip:port:user:pass');
 console.log(proxy, proxy.uri);
-const agent = new HttpsProxyAgent(proxy.uri);
 let resp = await fetch0('https://api.ipify.org/', {
-  agent,
+  ...(await makeProxyOpts(fetch0, proxy)).opts,
 });
 resp = await resp.text();
 console.log(resp);
